@@ -91,6 +91,7 @@
 									<ul>
 										<li><a href='#SoftDelete'>Soft Delete</a></li>
 										<li><a href='#eloEvents'>Events</a></li>
+										<li><a href='#CheckResult'>Check Result</a></li>
 										<li><a href='#EloquentConfiguration'>Eloquent Configuration</a></li>
 										<li><a href='#Pagination'>Pagination</a></li>								
 									</ul>
@@ -726,6 +727,14 @@ Model::saved(function($model){});
 Model::deleting(function($model){});
 Model::deleted(function($model){});
 Model::observe(new FooObserver);
+				</pre>
+				
+				<h4 id='CheckResult'>Check Result</h4>
+				<pre class="prettyprint lang-php">
+$result = Model::find(1);
+if ($result->first()) { } 
+if (!$result->isEmpty()) { }
+if ($result->count()) { }
 				</pre>
 				
 				<h4 id='EloquentConfiguration'>Eloquent Configuration</h4>
