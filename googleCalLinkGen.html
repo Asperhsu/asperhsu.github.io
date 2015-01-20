@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Google日曆連結產生器</title>
+
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/xdan/datetimepicker/master/jquery.datetimepicker.css" rel="stylesheet">
+<style>
+	body{ padding:0 20px;}
+	.checkbox-inline label{ padding-right:8px;} 
+</style>
+</head>
+<body>
+
+<h3>Google日曆連結產生器</h3>
+<div class='well well-sm'>
+	<div class="form-horizontal" role="form">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">會議名稱</label>
+			<div class="col-sm-10">
+				<input type="text" name='text' class="form-control" placeholder="">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">會議日期</label>
+			<div class="col-sm-10">
+				<input type="text" name='time' id='datepicker' class="form-control" placeholder="">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">開會時間</label>
+			<div class="col-sm-10">
+				<div class='checkbox-inline'>
+					<label><input type="radio" name='duration' value='0.5' checked='checked'/>30分鐘</label>
+					<label><input type="radio" name='duration' value='1'/>1小時 </label>
+					<label><input type="radio" name='duration' value='1.5'/>1.5小時 </label>
+					<label><input type="radio" name='duration' value='2'/>2小時 </label>
+					<label><input type="radio" name='duration' value='2.5'/>2.5小時 </label>
+					<label><input type="radio" name='duration' value='3'/>3小時 </label>
+					<label><input type="radio" name='duration' value='3.5'/>3.5小時 </label>
+					<label><input type="radio" name='duration' value='4'/>4小時 </label>
+				</div>			
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">說明</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" name='detail' rows="3"></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">地點</label>
+			<div class="col-sm-10">
+				<input type="text" name='location' class="form-control" placeholder="">
+			</div>
+		</div>
+		<button type="button" id='gen' class="btn btn-primary btn-lg btn-block">產生連結</button>
+	</div>
+</div>
+<div class='col-xs-12'>
+	請複製下列連結
+	<p><a href='#' target='_blank' id='link'></a></p>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/xdan/datetimepicker/master/jquery.datetimepicker.js"></script>
+<script>
+$(function(){
+	$("#datepicker").datetimepicker({
+		format:'Y/m/d H:i',
+		lang:'zh-TW',
+		step: 30
+	});
+	$("#gen").click(function(){		
+		var date = $("input[name='time']").val();
+		var duration = $("input[name='duration']:checked").val();
+		var detail = $("textarea[name='detail']").val().replace("\n",'%0A');	//%0A換行		
+		var location = $("input[name='location']").val();	
+		var text = $("input[name='text']").val();
+				
+		//date time
+		var dateStringParse = Date.parse(date);
+		var dateStart = new Date(dateStringParse).toISOString().replace(/[-:.]/g,'').substr(0,15)+'Z';
+		var dateEnd = new Date(dateStringParse+(duration*60*60*1000)).toISOString().replace(/[-:.]/g,'').substr(0,15)+'Z';		
+		
+		var url = 'https://www.google.com/calendar/render?action=TEMPLATE&trp=true&sf=true&output=xml';
+		url+= '&dates=' + dateStart + '/' + dateEnd; // 20140711T120000Z/20140711T143000Z
+		url+= '&details=' + detail;
+		url+= '&location=' + location;
+		url+= '&text=' + text;
+		
+		$("#link").attr('href', url).text(url);
+	});
+});
+</script>
+</body>
+</html>
