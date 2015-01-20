@@ -12,65 +12,92 @@
 <link href="https://cdn.rawgit.com/xdan/datetimepicker/master/jquery.datetimepicker.css" rel="stylesheet">
 <style>
 	body{ padding:0 20px;}
-	.checkbox-inline label{ padding-right:8px;} 
+	.checkbox-inline label{ padding-right:8px;}
+	#footer{ border-top:1px solid #eee; }
 </style>
 </head>
 <body>
+<div class='row'>
+	<div class='col-sm-9'>
+		<h3>Google日曆連結產生器</h3>
+		<div class='well well-sm'>
+			<div class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">會議名稱</label>
+					<div class="col-sm-10">
+						<input type="text" name='text' class="form-control" placeholder="此欄位對應到Google行事曆的活動名稱">
+					</div>
+				</div>
 
-<h3>Google日曆連結產生器</h3>
-<div class='well well-sm'>
-	<div class="form-horizontal" role="form">
-		<div class="form-group">
-			<label class="col-sm-2 control-label">會議名稱</label>
-			<div class="col-sm-10">
-				<input type="text" name='text' class="form-control" placeholder="">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">會議日期</label>
+					<div class="col-sm-10">
+						<input type="text" name='time' id='datepicker' class="form-control" placeholder="">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">開會時間</label>
+					<div class="col-sm-10">
+						<div class='checkbox-inline'>
+							<label><input type="radio" name='duration' value='0.5' checked='checked'/>30分鐘</label>
+							<label><input type="radio" name='duration' value='1'/>1小時 </label>
+							<label><input type="radio" name='duration' value='1.5'/>1.5小時 </label>
+							<label><input type="radio" name='duration' value='2'/>2小時 </label>
+							<label><input type="radio" name='duration' value='2.5'/>2.5小時 </label>
+							<label><input type="radio" name='duration' value='3'/>3小時 </label>
+							<label><input type="radio" name='duration' value='3.5'/>3.5小時 </label>
+							<label><input type="radio" name='duration' value='4'/>4小時 </label>
+						</div>			
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">說明</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" name='detail' rows="3"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">地點</label>
+					<div class="col-sm-10">
+						<input type="text" name='location' class="form-control" placeholder="">
+					</div>
+				</div>
+				<button type="button" id='gen' class="btn btn-primary btn-lg btn-block">產生連結</button>
 			</div>
 		</div>
-
-		<div class="form-group">
-			<label class="col-sm-2 control-label">會議日期</label>
-			<div class="col-sm-10">
-				<input type="text" name='time' id='datepicker' class="form-control" placeholder="">
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-2 control-label">開會時間</label>
-			<div class="col-sm-10">
-				<div class='checkbox-inline'>
-					<label><input type="radio" name='duration' value='0.5' checked='checked'/>30分鐘</label>
-					<label><input type="radio" name='duration' value='1'/>1小時 </label>
-					<label><input type="radio" name='duration' value='1.5'/>1.5小時 </label>
-					<label><input type="radio" name='duration' value='2'/>2小時 </label>
-					<label><input type="radio" name='duration' value='2.5'/>2.5小時 </label>
-					<label><input type="radio" name='duration' value='3'/>3小時 </label>
-					<label><input type="radio" name='duration' value='3.5'/>3.5小時 </label>
-					<label><input type="radio" name='duration' value='4'/>4小時 </label>
-				</div>			
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-2 control-label">說明</label>
-			<div class="col-sm-10">
-				<textarea class="form-control" name='detail' rows="3"></textarea>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-2 control-label">地點</label>
-			<div class="col-sm-10">
-				<input type="text" name='location' class="form-control" placeholder="">
-			</div>
-		</div>
-		<button type="button" id='gen' class="btn btn-primary btn-lg btn-block">產生連結</button>
+	</div>
+	<div class='col-sm-3'>
+		<h3>請複製下列連結</h3>
+		<p><a href='#' target='_blank' id='link'></a></p>
 	</div>
 </div>
-<div class='col-xs-12'>
-	請複製下列連結
-	<p><a href='#' target='_blank' id='link'></a></p>
-</div>
 
+<div id='footer'>
+<div class='col-sm-6'>
+		<h5>Notice</h5>
+		<ul>
+			<li>此網頁可單獨另存至本機執行，但需連接網路方可執行</li>
+			<li>使用方法: 可打好產生連結後，透過Email或通訊軟體將該網址傳給與會人員，該員點選後即可加入至行事曆</li>
+		</ul>
+	</div>
+	<div class='col-sm-1'>
+		<h5>Source</h5>
+		<a target='_blank' href='https://github.com/Aspertw/GoogleCalenderEventGenerator'>GitHub</a>	
+	</div>
+	<div class='col-sm-2'>
+		<h5>Plugins</h5>
+		<a target='_blank' href='http://jquery.com/'>jQuery</a>
+		<a target='_blank' href='http://xdsoft.net/jqplugins/datetimepicker/'>DateTimePicker</a>		
+	</div>
+	<div class='col-sm-3'>
+		<h5>References</h5>
+		<a target='_blank' href='http://steachs.com/archives/3805'>如何建立 Google 日曆連結</a>	
+		<a target='_blank' href='http://stackoverflow.com/questions/22757908/google-calendar-render-action-template-parameter-documentation'>Google Calendar Template parameter</a>	
+	</div>	
+</div>
 
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -81,7 +108,7 @@ $(function(){
 		format:'Y/m/d H:i',
 		lang:'zh-TW',
 		step: 30
-	});
+	}).val( defaultDate() );
 	$("#gen").click(function(){		
 		var date = $("input[name='time']").val();
 		var duration = $("input[name='duration']:checked").val();
@@ -102,6 +129,13 @@ $(function(){
 		
 		$("#link").attr('href', url).text(url);
 	});
+	
+	function defaultDate(){
+		var dd = new Date();
+		var str = dd.getFullYear() + '/' + dd.getMonth()+1 + '/' + dd.getDate() + ' ' +  dd.getHours() + ':';
+		str += ( dd.getMinutes() >= 30 ) ? '30' : '00';
+		return str;
+	};
 });
 </script>
 </body>
