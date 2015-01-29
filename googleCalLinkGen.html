@@ -112,7 +112,7 @@ $(function(){
 	$("#gen").click(function(){		
 		var date = $("input[name='time']").val();
 		var duration = $("input[name='duration']:checked").val();
-		var detail = $("textarea[name='detail']").val().replace("\n",'%0A');	//%0A換行		
+		var detail = $("textarea[name='detail']").val().replace(/\n/g,'%0A');	//%0A換行		
 		var location = $("input[name='location']").val();	
 		var text = $("input[name='text']").val();
 				
