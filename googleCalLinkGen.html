@@ -132,7 +132,7 @@ $(function(){
 	
 	function defaultDate(){
 		var dd = new Date();
-		var str = dd.getFullYear() + '/' + dd.getMonth()+1 + '/' + dd.getDate() + ' ' +  dd.getHours() + ':';
+		var str = dd.getFullYear() + '/' + (dd.getMonth()+1) + '/' + dd.getDate() + ' ' +  dd.getHours() + ':';
 		str += ( dd.getMinutes() >= 30 ) ? '30' : '00';
 		return str;
 	};
