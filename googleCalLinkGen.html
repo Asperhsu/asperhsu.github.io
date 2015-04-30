@@ -71,6 +71,10 @@
 	</div>
 	<div class='col-sm-3'>
 		<h3>請複製下列連結</h3>
+		<span class='label label-primary'>Google URL Shortener</span><br/>
+		<p><a href='#' target='_blank' id='shorter'></a></p>
+		<br/>		
+		<span class='label label-default'>Original URL</span><br/>
 		<p><a href='#' target='_blank' id='link'></a></p>
 	</div>
 </div>
@@ -102,8 +106,10 @@
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.rawgit.com/xdan/datetimepicker/master/jquery.datetimepicker.js"></script>
+<script src="https://raw.githubusercontent.com/hayageek/jQuery-URL-shortener/master/jquery.urlshortener.js"></script>
 <script>
 $(function(){
+	$.urlShortener.settings.apiKey = 'AIzaSyB6_b4-Z4JeGcpU5M8TPX7TOa9ghR7AURI';
 	$("#datepicker").datetimepicker({
 		format:'Y/m/d H:i',
 		lang:'zh-TW',
@@ -126,16 +132,32 @@ $(function(){
 		url+= '&details=' + detail;
 		url+= '&location=' + location;
 		url+= '&text=' + text;
-		
 		$("#link").attr('href', url).text(url);
+		
+		makeShort(url, function(shortUrl){
+			$("#shorter").attr('href', shortUrl).text(shortUrl);
+		});		
 	});
-	
+
 	function defaultDate(){
 		var dd = new Date();
 		var str = dd.getFullYear() + '/' + (dd.getMonth()+1) + '/' + dd.getDate() + ' ' +  dd.getHours() + ':';
 		str += ( dd.getMinutes() >= 30 ) ? '30' : '00';
 		return str;
 	};
+
+	function makeShort(url, cb){
+		$.urlShortener({
+			longUrl: url,
+			success: function (shortUrl) {
+			   if(cb){ cb(shortUrl); }
+			},
+			error: function(err){
+				if(cb){ cb(url); }
+			}
+		});
+	}
+  
 });
 </script>
 </body>
