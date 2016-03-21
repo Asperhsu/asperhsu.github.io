@@ -1,237 +1,111 @@
 /*
-Plugin: jQuery Parallax
-Version 1.1.3
-Author: Ian Lunn
-Twitter: @IanLunn
-Author URL: http://www.ianlunn.co.uk/
-Plugin URL: http://www.ianlunn.co.uk/plugins/jquery-parallax/
+* Noto Sans TC (Chinese_traditional) http://www.google.com/fonts/earlyaccess
+ */
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 100;
+  src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 300;
+  src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.otf) format('opentype');
+}
+@font-face {
+   font-family: 'Noto Sans TC';
+   font-style: normal;
+   font-weight: 400;
+   src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.otf) format('opentype');
+ }
+@font-face {
+   font-family: 'Noto Sans TC';
+   font-style: normal;
+   font-weight: 500;
+   src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.otf) format('opentype');
+ }
+@font-face {
+   font-family: 'Noto Sans TC';
+   font-style: normal;
+   font-weight: 700;
+   src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.otf) format('opentype');
+ }
+@font-face {
+   font-family: 'Noto Sans TC';
+   font-style: normal;
+   font-weight: 900;
+   src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.otf) format('opentype');
+ }
 
-License: http://creativecommons.org/licenses/by-sa/3.0/ (Attribution Share Alike). Please attribute work to Ian Lunn simply by leaving these comments in the source code or if you'd prefer, place a link on your website to http://www.ianlunn.co.uk/.
-*/
-
-@charset "utf-8";
-/* CSS Document */
-
-
-
-/*
-p{
-	margin: 0 0 20px 0;	
+html, body{
+	padding:20px;
+	font-family: 'Noto Sans TC', sans-serif;
 }
-
-p, ul{
-	font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	font-size-adjust:0.488;
-	font-weight:200;
-	font-style:normal;
-}
-
-img{
-	border: 0;
-}
-
-h1, #pixels{
-	font-family:"Museo 900", Verdana, serif;
-	font-size-adjust:0.40;
-	font-weight:700;
-	font-style:normal;
-}
-
-h2{
-	font-family:"Beau Sans Pro Book", Verdana, sans-serif;
-	font-size-adjust:0.531;
-	font-weight:500;
-	font-style:normal;
-}
-
-#header h1, #pixels{
-	color: #48941A;
-}
-
-.float-left{
-	float: left;	
-	margin: 0 0 0 20px;
-}
-
-.float-right{
-	float: right;
-	margin: 0 20px 0 0;
-}
-
-.center{
-	font-size: 2.5em;
-	padding: 80px 0 0 0;
-	text-align: center;
-}
-
-#nav{
-	list-style: none;
-	position: fixed;
-	right: 20px;
-}
-
-#nav li{
-	margin: 0 0 15px 0;	
-}
-
-#header, #intro, #second{
-	width: 100%;
-}*/
-body{
-	margin: 0;
-	min-width: 980px;
-	padding: 0;
-	padding-top:110px;
-}
-a {
-    text-decoration: none;
-}
-#nav{
-	background:#428BCA;
-    height: 100px;
-    opacity: 0.9;
-    padding-top: 10px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 4000;
-}
-#nav a {
-    color: #FFF;
-    font-weight: 700;
-    padding-bottom: 6px;
-}
-#nav img{
-	display: block;
-    height: 60px;
-    margin: 0 auto 0px;
-}
-#nav ul {
-    display: block;
-    list-style: none outside none;
-    text-align: center;
-}
-#nav li {
-    display: inline-block;
-    padding-right: 20px;
-}
-
-#content > div{
-	margin: 0 auto;
-	padding: 0;
-	position:relative;
-}
-.bg{
-	margin: 0 auto;
-	overflow: auto;
-	width: 100%;
-	position:absolute;
-	top:0;
-}
-.text{	
-	position:absolute;
-
-	width:500px;
-	z-index:1000;
-}
-
-#about{
-	color: black;
-	height: 700px;	
-}
-#about .text{
-	top:150px;
-	left:50px;
-}	
-#about .bg{
-	background:url(images/about.jpg) 50% 0 no-repeat fixed;	
+.headerImg{
+	height:100px;
+	background-position:0 70%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	opacity:0.2;
-	height:700px;
+}
+#sidebar{
+	width: 200px;
+}
+#logo{
+	width:50px;
+	margin:0 auto;
+	margin-bottom: 20px;	
 }
 
-#blog{	
-	color:#FFF;
-	height:500px;
+#channel li{
+	margin-bottom: 0.5em;
 }
-#blog a{	
-	color:#fff; 
-	background:#5193CC; 
-	padding:5px 10px; 
-}
-#blog .text{ 
-	right:150px; 
-	top:250px;
-	width:300px;
-}
-#blog .bg{
-	background: url(images/blog.jpg) 50% 0 no-repeat fixed;
-	opacity:0.9;
-	height:500px;
+#channel img{
+	max-height:30px;
 }
 
-#photo{	
-	height:600px;
-}
-#photo a{	
-	color:#fff; 
-	background:#5193CC; 
-	padding:5px 10px; 
-}
-#photo .text{ 
-	left:40%; 
-	top:250px;
-	width:200px;
-	text-align:center;
-}
-#photo .bg{
-	background: url(images/photo.jpg) 50% 0 no-repeat fixed;
-	opacity:0.9;
-	height:600px;
-}
+.post-container {
+  margin: 0 auto; }
 
-#youtube{	
-	height:700px;
-	background:#000;
-	color:#fff; 
-}
+.post-pagination {
+  text-align: center; }
 
-#youtube .text{ 
-	left:200px; 
-	top:250px;
-	width:200px;
-	text-align:center;
+.post {
+  padding: 0px !important;
+  margin: 10px 8px;
+  box-shadow: 3px 3px 4px rgba(51, 51, 102, 0.3);
+  width: 70%;
+  margin:20px auto;
 }
-#youtube .bg{
-	background:  url(images/y2b.jpg) 50% 0 no-repeat fixed;
-	height:700px;
-	opacity:0.7;
-}
-
-#github{	
-	height:500px;
-}
-#github a{	
-	color:#fff; 
-	background:#5193CC; 
-	padding:5px 10px; 
-}
-#github .text{ 
-	left:40%; 
-	top:250px;
-	width:200px;
-	text-align:center;
-}
-#github .bg{
-	background: url(images/github.jpg) 50% 0 no-repeat fixed;
-	opacity:0.9;
-	height:500px;
-	opacity:0.4;
-}
-
-/*
-.story .float-left, .story .float-right{
-	padding: 100px 0 0 0;
-	position: relative;
-	width: 350px;	
-}*/
-
+  .post .photo {
+    background: #9B9B9B;
+    min-height: 40px; 
+  }
+  .post .infos {
+  	padding:10px 5px;
+  }
+  .post .message {
+    margin: 10px;
+    line-height: 1.5em;
+    word-break: break-all; 
+  }
+  .post .message .title{
+	  font-size:1.3em;
+	  font-weight: bold;
+  }
+  .post .link{
+  	text-align: right;
+  }
