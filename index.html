@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,62 +17,66 @@
         html, body{
             font-family: 'Cubic 11', sans-serif;
         }
-        a {
+        a, a:link, a:visited {
+            color: #568cc6;
             text-decoration: none;
+        }
+        a:hover, a:active {
+            color: rgb(219, 219, 219);
         }
     </style>
 </head>
 <body class="bg-dark text-light">
     <div class="container">
-        <div class="col-12 col-md-6 d-flex flex-column mx-auto py-5 gap-3">
+        <div class="col-12 col-md-6 mx-auto py-5">
             <div class="text-center">
-                <img src="./images/sign.png" alt="" class="img-responsive">
+                <img src="./images/sign.png" class="img-responsive" style="max-height: 130px;">
             </div>
+
+            <hr>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://blog.asper.one">Blogger</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="album.html">Album</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/Asperhsu">Github</a>
+                </li>
+            </ul>
             <hr>
 
-            <figure>
-                <blockquote class="blockquote">
-                    <a href="https://blog.asper.one">Blogger</a>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    Blog
-                </figcaption>
-            </figure>
+            <div class="mt-5 d-flex flex-column gap-3">
+                <figure>
+                    <blockquote class="blockquote">
+                        <a href="https://airmap.g0v.tw/">G0V Airmap</a>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <del>被拉下坑寫的</del>空污地圖，應該是從 2017 開始服務
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <blockquote class="blockquote">
-                    <a href="https://github.com/Asperhsu">Github</a>
-                </blockquote>
-            </figure>
+                <figure>
+                    <blockquote class="blockquote">
+                        <a href="https://docs.asper.one">Docs</a>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        已被下架的框架文件 (Bootstrap Vue, CoreUI, Carbon, Laravel)
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <blockquote class="blockquote">
-                    <a href="https://airmap.g0v.tw/">G0V Airmap</a>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    <del>被拉下坑寫的</del>空污地圖，應該是從 2017 開始服務
-                </figcaption>
-            </figure>
+                <figure>
+                    <blockquote class="blockquote">
+                        <a href="https://github.com/Asperhsu/kobo99-calendar">Kobo 99 特價書日曆</a>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Kobo Blog 每週 99 特價書文章爬取為 <a href="https://calendar.google.com/calendar/embed?src=rcmvnfej75s7c9sjdbic1f55v8%40group.calendar.google.com&ctz=Asia%2FTaipei" target="_blank">Google 日曆</a>格式
+                    </figcaption>
+                </figure>
+            </div>
 
-            <figure>
-                <blockquote class="blockquote">
-                    <a href="https://docs.asper.one">Docs</a>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    已被下架的框架文件 (Bootstrap Vue, CoreUI, Carbon, Laravel)
-                </figcaption>
-            </figure>
-
-            <figure>
-                <blockquote class="blockquote">
-                    <a href="https://github.com/Asperhsu/kobo99-calendar">Kobo 99 特價書日曆</a>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    Kobo Blog 每週 99 特價書文章爬取為 <a href="https://calendar.google.com/calendar/embed?src=rcmvnfej75s7c9sjdbic1f55v8%40group.calendar.google.com&ctz=Asia%2FTaipei" target="_blank">Google 日曆</a>格式
-                </figcaption>
-            </figure>
-
-            <hr class="my-0">
+            <hr>
             <div class="text-end small text-light-emphasis">
                 Font: <a href="https://github.com/ACh-K/Cubic-11" target="_blank">ACh-K/Cubic-11</a>
             </div>
