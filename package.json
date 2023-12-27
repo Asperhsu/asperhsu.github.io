@@ -1,0 +1,41 @@
+{
+  "name": "asperhsu.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.mix.js",
+  "scripts": {
+    "dev": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production",
+    "serve": "http-server dist --no-dotfiles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asperhsu/asperhsu.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asperhsu/asperhsu.github.io/issues"
+  },
+  "homepage": "https://github.com/Asperhsu/asperhsu.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.6.0",
+    "http-server": "^14.1.1",
+    "js-beautify": "^1.14.11",
+    "js-yaml": "^4.1.0",
+    "laravel-mix": "^6.0.49",
+    "laravel-mix-twig": "^2.0.2",
+    "raw-loader": "^4.0.2",
+    "twig-html-loader": "^0.1.9"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
+  }
+}

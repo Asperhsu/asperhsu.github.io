@@ -1,0 +1,49 @@
+{% extends "@layouts/master.twig" %}
+
+{% block title %}Asper.one - Album{% endblock %}
+
+{% block styles %}
+    <style>
+        .album {
+            display: block;
+            width: 170px;
+        }
+        .cover {
+            height: 170px;
+            border-radius: 8px;;
+        }
+        .title {
+            display: -webkit-box;
+            padding-top: 8px;
+            font-size: .875rem;
+            line-height: 1.25rem;
+            max-height: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <h1 class="text-center">Album</h1>
+        <hr>
+
+        <div class="d-flex flex-wrap gap-3">
+            {% for album in albums %}
+            <a class="album" href="{{ album.url }}" target="_album">
+                <div class="cover" style="background-image: url('{{ album.cover }}');"></div>
+                <div class="title">{{ album.title }}</div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <hr>
+        <div class="d-flex">
+            <a href="index.html">&lt; Index</a>
+            <img src="images/sign.png" class="ms-auto img-responsive" style="max-height: 50px;">
+        </div>
+    </div>
+{% endblock %}
